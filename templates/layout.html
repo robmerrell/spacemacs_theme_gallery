@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      h1 {
+        font-size: 3em;
+        font-weight: 300;
+        text-align: center;
+      }
+
+      h2 {
+        font-weight: 100;
+        text-align: center;
+      }
+
+      h3 {
+        font-size: 1.1em;
+        font-weight: 500;
+        text-align: center;
+      }
+
+      #instructions {
+        background-color: #e7e7e7;
+        border-bottom: 1px solid #b7b7b7;
+        border-top: 1px solid #b7b7b7;
+        margin-bottom: 20px;
+        padding: 0 20px 20px 20px;
+      }
+
+      .instruction-box {
+        color: #333;
+        padding-top: 20px;
+        text-align: center;
+      }
+
+      #themes {
+        padding: 10px;
+      }
+
+      .source-frame {
+        border: 1px solid black;
+        height: 300px;
+        width: 400px;
+      }
+
+      .theme {
+        margin-bottom: 10px;
+      }
+
+      .theme-title {
+        font-weight: bold;
+        margin: 3px 0 3px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Spacemacs Themes</h1>
+    <h2>v. $0</h2>
+
+    <div id="instructions">
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2 instruction-box">
+          <h3>load themes on start up</h3><br>
+          (setq-default dotspacemacs-themes '(list-themes-here))
+        </div>
+
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2 instruction-box">
+          <h3>switch themes</h3><br>
+          &lt;SPC&gt; T h
+        </div>
+      </div>
+    </div>
+
+    <div id="themes">
+      <div class="pure-g">
+        $1
+      </div>
+    </div>
+  </body>
+</html>
