@@ -14,7 +14,7 @@
 (defun generate-theme-files ()
   (mapc
    (lambda (theme)
-     ;; (helm-themes--load-theme theme)
+     (helm-themes--load-theme theme)
      (htmlize-file "./sample.exs" (concat "./html/" theme ".html")))
    (sorted-helm-themes)))
 
