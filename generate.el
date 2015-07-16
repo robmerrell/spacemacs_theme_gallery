@@ -1,4 +1,5 @@
 ;; requires s.el to be available and loaded
+;; Just evaluate the buffer the files will be generated in ./html
 (require 's)
 (require 'cl-lib)
 
@@ -13,7 +14,7 @@
 (defun generate-theme-files ()
   (mapc
    (lambda (theme)
-     (helm-themes--load-theme theme)
+     ;; (helm-themes--load-theme theme)
      (htmlize-file "./sample.exs" (concat "./html/" theme ".html")))
    (sorted-helm-themes)))
 
@@ -28,7 +29,9 @@
            themes)))
 
 (defun generate-site-files ()
-  (delete-directory "./html")
+  (if (file-exists-p "./html")
+    (delete-directory "./html" t))
+  (mkdir "./html")
   (generate-theme-files)
   (append-to-file
    (generate-index-html (get-string-from-file "./templates/layout.html")
