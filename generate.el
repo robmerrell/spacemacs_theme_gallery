@@ -14,8 +14,8 @@
 (defun generate-theme-files ()
   (mapc
    (lambda (theme)
-     (helm-themes--load-theme theme)
-     (htmlize-file "./sample.exs" (concat "./html/" theme ".html")))
+     (ignore-errors(helm-themes--load-theme theme))
+     (ignore-errors(htmlize-file "./sample.exs" (concat "./html/" theme ".html"))))
    (sorted-helm-themes)))
 
 (defun generate-index-html (tpl iframes-html)
