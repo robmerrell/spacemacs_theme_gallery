@@ -2,6 +2,7 @@
 ;; Just evaluate the buffer the files will be generated in ./html
 (require 's)
 (require 'cl-lib)
+(require 'helm-themes)
 
 ;; requires to keep htmlize happy about font faces
 (require 'outline)
@@ -54,6 +55,7 @@
     (delete-directory "./html" t))
   (mkdir "./html")
   (generate-theme-files)
+  (copy-file "./templates/lazyload.min.js" "./html/lazyload.min.js")
   (append-to-file
    (generate-index-html (get-string-from-file "./templates/layout.html")
                         (generate-iframes-html(get-string-from-file "./templates/iframe.html") (sorted-helm-themes)))
