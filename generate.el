@@ -1,5 +1,4 @@
 ;; requires s.el to be available and loaded
-;; Just evaluate the buffer the files will be generated in ./html
 (require 's)
 (require 'cl-lib)
 (require 'helm-themes)
