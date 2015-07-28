@@ -1,15 +1,11 @@
-defmodule KV do
-  def start_link do
-    Task.start_link(fn -> loop(%{}) end)
-  end
+# This is a comment
+defmodule Math do
+  def sum(a, b), do: a + b
 
-  defp loop(map) do
-    receive do
-      {:get, key, caller} ->
-        send caller, Map.get(map, key)
-        loop(map)
-      {:put, key, value} ->
-        loop(Map.put(map, key, value))
-    end
+  @doc """
+  Sum a list of numbers
+  """
+  def sum_list(list) do
+    Enum.reduce list, &Kernel.+/2
   end
 end
