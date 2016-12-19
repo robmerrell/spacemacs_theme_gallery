@@ -51,11 +51,15 @@
 
 (defun generate-theme-div (tpl theme)
   "Generate the div for a single theme"
-  (helm-themes--load-theme theme)
-  (let* ((buffer-faces (htmlize-faces-in-buffer))
-         (face-map (htmlize-make-face-map (adjoin 'default buffer-faces)))
-         (style (mapconcat #'identity (htmlize-css-specs (gethash 'default face-map)) " ")))
-    (s-format tpl 'elt (list theme style (mark-and-htmlize-buffer)))))
+  (or
+   (condition-case nil
+       (progn (helm-themes--load-theme theme) nil)
+       (error 
+        (s-format tpl 'elt (list theme "" "error: could not load theme"))))
+   (let* ((buffer-faces (htmlize-faces-in-buffer))
+          (face-map (htmlize-make-face-map (adjoin 'default buffer-faces)))
+          (style (mapconcat #'identity (htmlize-css-specs (gethash 'default face-map)) " ")))
+     (s-format tpl 'elt (list theme style (mark-and-htmlize-buffer))))))
 
 (defun generate-and-join-all-theme-divs (tpl themes)
   "Generate the divs containing the themed content that is embedded inside of the index.html layout"
